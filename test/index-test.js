@@ -34,20 +34,25 @@ describe('gulpGithooks.', function() {
     });
 
     describe('chkExist', function() {
-        it('should be OK', function() {
+        this.timeout(2000);
+        it('should be not existed', function(done) {
             copyToGithooks.gulpGithooks.chkExist(process.env.PWD + '/githooksnotexist',
                 function(err, data) {
-                    chai.assert.equal(data.hasOwnProperty('errno'), true);
+                    chai.assert.equal(err.hasOwnProperty('errno'), true);
                 });
-            copyToGithooks.gulpGithooks.chkExist(process.env.PWD + '/githookss',
+            setTimeout(done, 1000);
+        });
+        it('should be existed', function(done) {
+            copyToGithooks.gulpGithooks.chkExist(process.env.PWD + '/githooks',
                 function(err, data) {
                     chai.assert.equal(data.hasOwnProperty('atime'), true);
                 });
+            setTimeout(done, 1000);
         });
     });
 
     describe('sync', function() {
-        this.timeout(3000);
+        this.timeout(4000);
         it('should be OK', function(done) {
             copyToGithooks.gulpGithooks.sync('githooks');
             setTimeout(done, 1000);
@@ -58,7 +63,14 @@ describe('gulpGithooks.', function() {
                 function(err, data) {
                     chai.assert.equal(data.hasOwnProperty('atime'), true);
                 });
-            setTimeout(done, 2000);
+            setTimeout(done, 1000);
+        });
+        it('should copy [pre-commit] to .git/hooks', function(done) {
+            copyToGithooks.gulpGithooks.chkExist(process.env.PWD + '/.git/hooks/pre-commit',
+                function(err, data) {
+                    chai.assert.equal(data.hasOwnProperty('atime'), true);
+                });
+            setTimeout(done, 1000);
         });
     });
 });

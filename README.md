@@ -1,8 +1,6 @@
 # gulp-githooks v0.1.0
 
 [![Build Status](https://travis-ci.org/zhaiduo/gulp-githooks.svg?branch=master)](https://travis-ci.org/zhaiduo/gulp-githooks)
-[![Code Climate](https://codeclimate.com/github/zhaiduo/gulp-githooks/badges/gpa.svg)](https://codeclimate.com/github/zhaiduo/gulp-githooks)
-[![Downloads per Month](http://img.shields.io/npm/dm/gulp-githooks.svg)](https://www.npmjs.org/package/gulp-githooks)
 
 > A Gulp plugin to copy all githooks files in ./githooks to .git/hooks automatically.
 
