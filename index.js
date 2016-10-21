@@ -10,7 +10,7 @@ var path = require('path');
 var gulp = require('gulp');
 
 var gulpGithooks = {
-	version: '0.1.0'
+	version: '0.1.1'
 };
 gulpGithooks.hooks = [
     //Committing-Workflow Hooks
