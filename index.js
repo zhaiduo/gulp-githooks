@@ -10,7 +10,8 @@ var path = require('path');
 var gulp = require('gulp');
 
 var gulpGithooks = {
-	version: '0.1.1'
+    version: '0.1.1',
+    name: process.env.npm_package_name
 };
 gulpGithooks.hooks = [
     //Committing-Workflow Hooks
@@ -78,8 +79,25 @@ gulpGithooks.chkExist = function(trg, cb) {
         }
     });
 };
+gulpGithooks.findHomeDir = function(pwd, name) {
+    var _pwd = (typeof pwd === 'string') ? pwd : process.env.PWD;
+    var _name = (typeof name === 'string') ? name : gulpGithooks.name.replace(/[^0-9a-z\-]/ig, "");
+    var reg = new RegExp(_name.replace(/"\/"+([\-])/ig, "\\$1") + "$", "");
+    var regOther = new RegExp("^(.*)\/" + _name.replace(/"\/"+([\-])/ig, "\\$1") + "\/(.*)$", "");
+    if (_pwd.match(reg)) {
+        return _pwd;
+    } else {
+        if (_pwd.match(regOther)) {
+            return RegExp.$1 + '/' + _name;
+        } else {
+            return null;
+        }
+    }
+};
 gulpGithooks.sync = function(dirname) {
-    var _dirname = (typeof dirname === 'string') ? dirname : 'githooks';
+    var _dirname = (typeof dirname === 'string') ? dirname.replace(/[^0-9a-z]/ig, "") : 'githooks';
+    var appHome = gulpGithooks.findHomeDir();
+    if (appHome === null) appHome = process.env.PWD;
     //Check all hooks at: https://git-scm.com/book/en/\
     //v2/Customizing-Git-Git-Hooks
     gulpGithooks.chkExist(process.env.PWD + '/.git/hooks/', function(err, data) {
@@ -95,7 +113,7 @@ gulpGithooks.sync = function(dirname) {
                             var rfn = RegExp.$1;
                             if (gulpGithooks.inArray(rfn, gulpGithooks.hooks)) {
                                 gulp.src([fn]).pipe(
-                                    gulp.dest(process.env.PWD + '/.git/hooks/')
+                                    gulp.dest(appHome + '/.git/hooks/')
                                 );
                                 console.log("\tCopy file [" + rfn + "] to .git/hooks ");
                             } else {

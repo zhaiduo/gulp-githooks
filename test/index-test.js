@@ -51,6 +51,16 @@ describe('gulpGithooks.', function() {
         });
     });
 
+    describe('findHomeDir', function() {
+        it('should be OK', function() {
+            chai.assert.equal(copyToGithooks.gulpGithooks.findHomeDir('/Home/apps/test-app', 'test-app'), '/Home/apps/test-app');
+        });
+
+        it('should be in parent directory', function() {
+            chai.assert.equal(copyToGithooks.gulpGithooks.findHomeDir('/Home/apps/test-app/node_modules', 'test-app'), '/Home/apps/test-app');
+        });
+    });
+
     describe('sync', function() {
         this.timeout(4000);
         it('should be OK', function(done) {
