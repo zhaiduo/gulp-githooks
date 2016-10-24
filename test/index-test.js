@@ -28,7 +28,7 @@ describe('gulpGithooks.', function() {
         it('should be OK', function() {
             copyToGithooks.gulpGithooks.walkDir(process.env.PWD + '/githooks',
                 function(err, files) {
-                    chai.assert.equal(files, ['pre-commit']);
+                    chai.assert.equal(files[0], 'pre-commit');
                 });
         });
     });
