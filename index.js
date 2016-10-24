@@ -10,7 +10,7 @@ var path = require('path');
 var gulp = require('gulp');
 
 var gulpGithooks = {
-    version: '0.1.1',
+    version: '0.1.6',
     name: process.env.npm_package_name
 };
 gulpGithooks.hooks = [
@@ -100,13 +100,13 @@ gulpGithooks.sync = function(dirname) {
     if (appHome === null) appHome = process.env.PWD;
     //Check all hooks at: https://git-scm.com/book/en/\
     //v2/Customizing-Git-Git-Hooks
-    gulpGithooks.chkExist(process.env.PWD + '/.git/hooks/', function(err, data) {
+    gulpGithooks.chkExist(appHome + '/.git/hooks/', function(err, data) {
         if (err) {
             console.error('The directory ./.git/hooks not existed: ' + err.toString());
         } else {
             gulpGithooks.walkDir(process.env.PWD + '/' + _dirname, function(err, files) {
                 if (err) {
-                    console.error('Failed to list ./' + _dirname + ': ' + err.toString());
+                    console.error('Failed to find ./' + _dirname + ' in PWD: ' + err.toString());
                 } else {
                     files.map(function(fn, i) {
                         if (fn.match(/([^\/]+)$/i)) {

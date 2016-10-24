@@ -1,4 +1,4 @@
-# gulp-githooks v0.1.5
+# gulp-githooks v0.1.6
 
 [![Build Status](https://travis-ci.org/zhaiduo/gulp-githooks.svg?branch=master)](https://travis-ci.org/zhaiduo/gulp-githooks)
 
