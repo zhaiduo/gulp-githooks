@@ -79,22 +79,21 @@ gulpGithooks.chkExist = function(trg, cb) {
     });
 };
 gulpGithooks.sync = function(dirname) {
-    var _this = this;
     var _dirname = (typeof dirname === 'string') ? dirname : 'githooks';
     //Check all hooks at: https://git-scm.com/book/en/\
     //v2/Customizing-Git-Git-Hooks
-    _this.chkExist(process.env.PWD + '/.git/hooks/', function(err, data) {
+    gulpGithooks.chkExist(process.env.PWD + '/.git/hooks/', function(err, data) {
         if (err) {
             console.error('The directory ./.git/hooks not existed: ' + err.toString());
         } else {
-            _this.walkDir(process.env.PWD + '/' + _dirname, function(err, files) {
+            gulpGithooks.walkDir(process.env.PWD + '/' + _dirname, function(err, files) {
                 if (err) {
                     console.error('Failed to list ./' + _dirname + ': ' + err.toString());
                 } else {
                     files.map(function(fn, i) {
                         if (fn.match(/([^\/]+)$/i)) {
                             var rfn = RegExp.$1;
-                            if (_this.inArray(rfn, _this.hooks)) {
+                            if (gulpGithooks.inArray(rfn, gulpGithooks.hooks)) {
                                 gulp.src([fn]).pipe(
                                     gulp.dest(process.env.PWD + '/.git/hooks/')
                                 );
