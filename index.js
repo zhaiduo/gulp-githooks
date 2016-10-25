@@ -81,7 +81,7 @@ gulpGithooks.chkExist = function(trg, cb) {
 };
 gulpGithooks.findHomeDir = function(pwd, name) {
     var _pwd = (typeof pwd === 'string') ? pwd : process.env.PWD;
-    var _name = (typeof name === 'string') ? name : gulpGithooks.name.replace(/[^0-9a-z\-]/ig, "");
+    var _name = (typeof name === 'string') ? name : gulpGithooks.name.replace(/[^0-9a-z_\-]/ig, "");
     var reg = new RegExp(_name.replace(/"\/"+([\-])/ig, "\\$1") + "$", "");
     var regOther = new RegExp("^(.*)\/" + _name.replace(/"\/"+([\-])/ig, "\\$1") + "\/(.*)$", "");
     if (_pwd.match(reg)) {
@@ -94,9 +94,10 @@ gulpGithooks.findHomeDir = function(pwd, name) {
         }
     }
 };
-gulpGithooks.sync = function(dirname) {
+gulpGithooks.sync = function(dirname, homeDirname) {
     var _dirname = (typeof dirname === 'string') ? dirname.replace(/[^0-9a-z]/ig, "") : 'githooks';
-    var appHome = gulpGithooks.findHomeDir();
+    var _homeDirname = (typeof homeDirname === 'string') ? homeDirname.replace(/[^0-9a-z_\-]/ig, "") : process.env.npm_package_name;
+    var appHome = gulpGithooks.findHomeDir(process.env.PWD, _homeDirname);
     if (appHome === null) appHome = process.env.PWD;
     //Check all hooks at: https://git-scm.com/book/en/\
     //v2/Customizing-Git-Git-Hooks

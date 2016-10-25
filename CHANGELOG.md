@@ -1,5 +1,6 @@
 # Changelog
 
+ - 2016-10-24   v0.1.7   Fix `home dir` bug
  - 2016-10-24   v0.1.6   Fix `this` bug
  						 Find home dir automatically for .git
  - 2016-10-21   v0.1.1   Use travis

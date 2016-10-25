@@ -1,4 +1,4 @@
-# gulp-githooks v0.1.6
+# gulp-githooks v0.1.7
 
 [![Build Status](https://travis-ci.org/zhaiduo/gulp-githooks.svg?branch=master)](https://travis-ci.org/zhaiduo/gulp-githooks)
 
@@ -22,9 +22,14 @@ Gulpfile with this line of JavaScript:
 
 ```js
 var copyToGithooks = require('gulp-githooks');
+//copy githookfiles from ./githooks to ./git/hooks
 copyToGithooks.sync();
 or
+//copy githookfiles from ./another_githooks_directory to ./git/hooks
 copyToGithooks.sync('another_githooks_directory');
+or
+//copy githookfiles from ./githooks to ./yourapp./git/hooks
+copyToGithooks.sync('githooks', 'yourapp');
 ```
 
 ### Options
@@ -34,6 +39,12 @@ Type: `String`
 Defaults: `githooks`
 
 It can also allow you to run another dirname to save the git hookfiles to sync.
+
+#### homeDirname
+Type: `String`
+Defaults: `process.env.npm_package_name`
+
+It can help you to find where is the home directory.
 
 ## Contributing
 
