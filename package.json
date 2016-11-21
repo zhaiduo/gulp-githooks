@@ -4,7 +4,8 @@
   "description": "Copy all githooks files in ./githooks to .git/hooks automatically.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha",
+    "log": "~/gitchangelog/gitchangelog > CHANGELOG.md"
   },
   "keywords": [
     "gulp",
