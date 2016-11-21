@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "log": "~/gitchangelog/gitchangelog > CHANGELOG.md"
+    "log": "~/gitchangelog/gitchangelog > CHANGELOG.md && ./updateReadme.sh"
   },
   "keywords": [
     "gulp",

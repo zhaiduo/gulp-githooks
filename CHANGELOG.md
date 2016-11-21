@@ -4,6 +4,8 @@ Changelog
 Unreleased
 ----------
 
+- Chg: Update changelog. [zhaiduo]
+
 - Chg: use npm_package_version & warning when no homedir found.
   [zhaiduo]
 
