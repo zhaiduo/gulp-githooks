@@ -1,8 +1,10 @@
 Changelog
 =========
 
-Unreleased
-----------
+0.1.8 (2016-11-21)
+------------------
+
+- New: Add version update script. [zhaiduo]
 
 - Chg: Update changelog. [zhaiduo]
 
