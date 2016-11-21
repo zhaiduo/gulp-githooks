@@ -10,7 +10,7 @@ var path = require('path');
 var gulp = require('gulp');
 
 var gulpGithooks = {
-    version: '0.1.6',
+    version: process.env.npm_package_version,
     name: process.env.npm_package_name
 };
 gulpGithooks.hooks = [
@@ -98,7 +98,10 @@ gulpGithooks.sync = function(dirname, homeDirname) {
     var _dirname = (typeof dirname === 'string') ? dirname.replace(/[^0-9a-z]/ig, "") : 'githooks';
     var _homeDirname = (typeof homeDirname === 'string') ? homeDirname.replace(/[^0-9a-z_\-]/ig, "") : process.env.npm_package_name;
     var appHome = gulpGithooks.findHomeDir(process.env.PWD, _homeDirname);
-    if (appHome === null) appHome = process.env.PWD;
+    if (appHome === null) {
+        console.warn("\tFailed to find the home directory when copy git hook file.");
+        appHome = process.env.PWD;
+    }
     //Check all hooks at: https://git-scm.com/book/en/\
     //v2/Customizing-Git-Git-Hooks
     gulpGithooks.chkExist(appHome + '/.git/hooks/', function(err, data) {
