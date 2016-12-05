@@ -4,6 +4,11 @@ Changelog
 Unreleased
 ----------
 
+- New: Update log. [lvyadong]
+
+0.1.12 (2016-12-05)
+-------------------
+
 - New: Optimize deploy script again. [lvyadong]
 
 - New: Optimize deploy script. [lvyadong]
