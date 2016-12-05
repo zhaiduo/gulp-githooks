@@ -4,6 +4,8 @@ Changelog
 Unreleased
 ----------
 
+- New: Optimize deploy script again. [lvyadong]
+
 - New: Optimize deploy script. [lvyadong]
 
 - New: Update deploy script. [lvyadong]
