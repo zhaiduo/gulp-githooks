@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "deploy": "./commitAndDeploy.sh"
+    "deploy": "./commitAndDeploy.sh",
+    "log": "./log.sh"
   },
   "keywords": [
     "gulp",
