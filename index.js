@@ -8,6 +8,7 @@
 var fs = require('fs');
 var path = require('path');
 var gulp = require('gulp');
+var chmod = require('gulp-chmod');
 
 var gulpGithooks = {
     version: process.env.npm_package_version,
@@ -116,7 +117,7 @@ gulpGithooks.sync = function(dirname, homeDirname) {
                         if (fn.match(/([^\/]+)$/i)) {
                             var rfn = RegExp.$1;
                             if (gulpGithooks.inArray(rfn, gulpGithooks.hooks)) {
-                                gulp.src([fn]).pipe(
+                                gulp.src([fn]).pipe(chmod(0o755)).pipe(
                                     gulp.dest(appHome + '/.git/hooks/')
                                 );
                                 console.log("\tCopy file [" + rfn + "] to .git/hooks ");

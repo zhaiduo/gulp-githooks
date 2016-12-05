@@ -78,6 +78,7 @@ describe('gulpGithooks.', function() {
         it('should copy [pre-commit] to .git/hooks', function(done) {
             copyToGithooks.gulpGithooks.chkExist(process.env.PWD + '/.git/hooks/pre-commit',
                 function(err, data) {
+                	chai.assert.equal(data.mode, 33261);
                     chai.assert.equal(data.hasOwnProperty('atime'), true);
                 });
             setTimeout(done, 1000);
