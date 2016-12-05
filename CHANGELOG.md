@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Unreleased
+----------
+
+- New: Update deploy script. [lvyadong]
+
 0.1.9 (2016-12-05)
 ------------------
 
