@@ -4,6 +4,13 @@ Changelog
 Unreleased
 ----------
 
+- Chg: Finish deploy script. [lvyadong]
+
+0.1.14 (2016-12-05)
+-------------------
+
+- New: Update log. [lvyadong]
+
 - New: Adjust deploy logic. [lvyadong]
 
 0.1.13 (2016-12-05)
