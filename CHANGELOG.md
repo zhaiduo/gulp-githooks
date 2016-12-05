@@ -4,6 +4,11 @@ Changelog
 Unreleased
 ----------
 
+- New: Adjust deploy logic. [lvyadong]
+
+0.1.13 (2016-12-05)
+-------------------
+
 - New: Update log. [lvyadong]
 
 0.1.12 (2016-12-05)
