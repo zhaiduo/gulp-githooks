@@ -4,6 +4,13 @@ Changelog
 Unreleased
 ----------
 
+- Fix: Module lost. [lvyadong]
+
+0.1.15 (2016-12-05)
+-------------------
+
+- New: Update log. [lvyadong]
+
 - Chg: Finish deploy script. [lvyadong]
 
 0.1.14 (2016-12-05)
